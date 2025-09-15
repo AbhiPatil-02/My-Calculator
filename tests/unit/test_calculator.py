@@ -33,4 +33,24 @@ class TestMultiplyDivideWithValidation:
         with pytest.raises(TypeError, match="Division requires numeric inputs"):
             divide("10", 2)
 
-# TODO: Students will add TestMultiplyDivide class
+class TestMultiplyDivide:
+    """Test valid multiplication and division cases."""
+
+    def test_multiply_numbers(self):
+        """Test multiplying various numbers"""
+        assert multiply(3, 4) == 12
+        assert multiply(-2, 5) == -10
+        assert multiply(0, 100) == 0
+        assert multiply(-3, -3) == 9
+
+    def test_divide_numbers(self):
+        """Test dividing various numbers"""
+        assert divide(10, 2) == 5
+        assert divide(9, 3) == 3
+        assert divide(-15, 3) == -5
+        assert divide(7.5, 2.5) == 3.0
+
+    def test_divide_by_zero(self):
+        """Test division by zero raises ZeroDivisionError"""
+        with pytest.raises(ZeroDivisionError, match="Cannot divide by zero"):
+            divide(10, 0)
